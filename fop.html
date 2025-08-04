@@ -1,0 +1,3504 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FOUNDATION OF PRAISE MINISTRIES</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* ===== RESET & BASE STYLES ===== */
+        
+         :root {
+            --primary-color: #6a1b9a;
+            --primary-dark: #4a126a;
+            --primary-light: #9c4dcc;
+            --secondary-color: #ff8a00;
+            --text-dark: #222;
+            --text-medium: #444;
+            --text-light: #666;
+            --bg-light: #f9f9f9;
+            --bg-white: #ffffff;
+            --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.1);
+            --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.15);
+            --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.2);
+            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            --border-radius: 8px;
+            --border-radius-lg: 16px;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-medium);
+            overflow-x: hidden;
+            position: relative;
+        }
+        
+        h1,
+        h2,
+        h3,
+        h4 {
+            color: var(--text-dark);
+            line-height: 1.2;
+            margin-bottom: 1rem;
+        }
+        
+        p {
+            margin-bottom: 1.2rem;
+        }
+        
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        ul {
+            list-style: none;
+        }
+        
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .section {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 2.5rem;
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--primary-color);
+            border-radius: 2px;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 28px;
+            border-radius: 50px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: var(--transition);
+            border: 2px solid transparent;
+            cursor: pointer;
+        }
+        
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-sm);
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            border-color: var(--primary-color);
+            color: var(--primary-color);
+        }
+        
+        .btn-outline:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        /* ===== VIDEO BACKGROUND ===== */
+        
+        .video-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            overflow: hidden;
+        }
+        
+        .video-background video {
+            min-width: 100%;
+            min-height: 100%;
+            object-fit: cover;
+            opacity: 0.8;
+        }
+        
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            z-index: -1;
+        }
+        /* ===== HEADER ===== */
+        
+        header {
+            background-color: rgba(0, 0, 0, 0.85);
+            padding: 15px 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            transition: var(--transition);
+        }
+        
+        header.scrolled {
+            background-color: rgba(0, 0, 0, 0.95);
+            box-shadow: var(--shadow-md);
+            padding: 10px 0;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 2px solid white;
+            transition: var(--transition);
+        }
+        
+        .logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .logo:hover {
+            transform: scale(1.1);
+            border-color: var(--primary-light);
+        }
+        /* ===== NAVIGATION ===== */
+        
+        nav {
+            transition: var(--transition);
+        }
+        
+        nav ul {
+            display: flex;
+            align-items: center;
+        }
+        
+        nav ul li {
+            margin-left: 25px;
+            position: relative;
+        }
+        
+        nav ul li a {
+            color: white;
+            font-weight: 600;
+            font-size: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: var(--transition);
+            padding: 8px 12px;
+            border-radius: 4px;
+        }
+        
+        nav ul li a:hover,
+        nav ul li a.active {
+            color: var(--primary-light);
+        }
+        
+        .dropdown {
+            position: relative;
+        }
+        
+        .dropdown-btn {
+            background: none;
+            border: none;
+            color: white;
+            font-weight: 600;
+            font-size: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            padding: 8px 12px;
+            transition: var(--transition);
+        }
+        
+        .dropdown-btn:hover {
+            color: var(--primary-light);
+        }
+        
+        .dropdown-content {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: white;
+            min-width: 200px;
+            box-shadow: var(--shadow-lg);
+            border-radius: var(--border-radius);
+            z-index: 100;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+        }
+        
+        .dropdown:hover .dropdown-content {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        
+        .dropdown-content a {
+            display: block;
+            padding: 12px 20px;
+            color: var(--text-medium);
+            transition: var(--transition);
+            border-left: 3px solid transparent;
+        }
+        
+        .dropdown-content a:hover {
+            background-color: var(--bg-light);
+            color: var(--primary-color);
+            border-left: 3px solid var(--primary-color);
+            padding-left: 25px;
+        }
+        /* Nested Dropdown Styles */
+        
+        .dropdown-nested {
+            position: relative;
+            width: 100%;
+        }
+        
+        .dropdown-nested .dropdown-btn {
+            width: 100%;
+            text-align: left;
+            padding: 12px 20px;
+            color: var(--text-medium);
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 15px;
+            font-weight: 600;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .dropdown-nested .dropdown-content {
+            position: relative;
+            box-shadow: none;
+            background-color: rgba(0, 0, 0, 0.05);
+            width: 100%;
+            padding-left: 15px;
+            border-left: 3px solid var(--primary-light);
+            display: none;
+        }
+        
+        .dropdown-nested.active .dropdown-content {
+            display: block;
+        }
+        /* Mobile styles for nested dropdowns */
+        
+        @media (max-width: 768px) {
+            .dropdown-nested .dropdown-btn {
+                padding: 12px 15px;
+                font-size: 16px;
+            }
+            .dropdown-nested .dropdown-content {
+                padding-left: 25px;
+            }
+            .dropdown-nested .dropdown-content a {
+                padding: 10px 0;
+            }
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+            z-index: 1001;
+        }/* Nested Dropdown Styles */
+.dropdown-nested {
+    position: relative;
+}
+
+.dropdown-nested .nested-btn {
+    width: 100%;
+    text-align: left;
+    padding: 12px 20px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text-medium);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.dropdown-nested .nested-content {
+    display: none;
+    padding-left: 15px;
+}
+
+.dropdown-nested.active .nested-content {
+    display: block;
+}
+
+.dropdown-nested .nested-btn i {
+    transition: transform 0.3s ease;
+    font-size: 12px;
+}
+
+.dropdown-nested.active .nested-btn i {
+    transform: rotate(90deg);
+}
+
+/* Mobile styles */
+@media (max-width: 768px) {
+    .dropdown-nested .nested-content {
+        background-color: rgba(0, 0, 0, 0.1);
+        border-left: 3px solid var(--primary-light);
+        margin: 5px 0 10px 0;
+    }
+
+    .dropdown-nested .nested-btn {
+        padding: 12px 15px;
+    }
+
+    .dropdown-nested .nested-content a {
+        padding: 10px 15px;
+        color: white;
+    }
+
+    .dropdown-nested .nested-content a:hover {
+        background-color: rgba(255, 255, 255, 0.1);
+    }
+}
+        /* ===== HERO SECTION ===== */
+        
+        .hero {
+            height: 100vh;
+            min-height: 700px;
+            display: flex;
+            align-items: center;
+            position: relative;
+            padding-top: 80px;
+        }
+        
+        .hero-container {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+        }
+        
+        .hero-left {
+            flex: 1;
+            position: relative;
+            border-radius: var(--border-radius-lg);
+            overflow: hidden;
+            height: 500px;
+            box-shadow: var(--shadow-lg);
+            transform: translateZ(0);
+            transition: var(--transition);
+        }
+        
+        .hero-left:hover {
+            transform: translateZ(0) scale(1.02);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3);
+        }
+        
+        .hero-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        
+        .hero-left:hover .hero-img {
+            transform: scale(1.1);
+        }
+        
+        .hero-right {
+            flex: 1;
+            background-color: rgba(255, 255, 255, 0.95);
+            padding: 50px;
+            border-radius: var(--border-radius-lg);
+            box-shadow: var(--shadow-lg);
+            position: relative;
+            z-index: 1;
+            margin-left: -50px;
+        }
+        
+        .hero-title {
+            font-size: 2.8rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            color: var(--text-dark);
+        }
+        
+        .hero-title span {
+            color: var(--primary-color);
+        }
+        
+        .hero-divider {
+            width: 80px;
+            height: 4px;
+            background: var(--primary-color);
+            margin: 1.5rem 0;
+            border-radius: 2px;
+        }
+        
+        .hero-text {
+            font-size: 1.1rem;
+            color: var(--text-medium);
+            margin-bottom: 2rem;
+        }
+        
+        .hero-list {
+            margin: 2rem 0;
+        }
+        
+        .hero-list li {
+            position: relative;
+            padding-left: 35px;
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+            color: var(--text-medium);
+        }
+        
+        .hero-list li i {
+            color: var(--primary-color);
+            position: absolute;
+            left: 0;
+            top: 4px;
+            font-size: 1.3rem;
+        }
+        
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+            margin-top: 2.5rem;
+        }
+        /* ===== HOME CONTENT ===== */
+        
+        .home-content {
+            display: none;
+        }
+        
+        .home-content.active {
+            display: block;
+        }
+        /* ===== MINISTRY SECTIONS ===== */
+        
+        .ministry-section {
+            display: none;
+            background-color: var(--bg-white);
+            padding: 80px;
+            border-radius: var(--border-radius-lg);
+            margin: 80px 0;
+            box-shadow: var(--shadow-md);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .ministry-section.active {
+            display: block;
+            animation: fadeInUp 0.6s ease;
+        }
+        
+        .ministry-content {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+        }
+        
+        .ministry-header {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 180px;
+            z-index: 0;
+        }
+        
+        .ministry-header-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .ministry-header-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.88);
+        }
+        
+        .ministry-header-title {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-size: 3rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            z-index: 1;
+            text-align: center;
+            width: 100%;
+            padding: 0 20px;
+        }
+        
+        .ministry-text {
+            flex: 1;
+            margin-top: 200px;
+            position: relative;
+            z-index: 1;
+            animation: slideUp 0.8s ease;
+            background-color: var(--bg-white);
+            padding: 30px;
+            border-radius: var(--border-radius-lg);
+            box-shadow: var(--shadow-md);
+        }
+        
+        .ministry-text h2 {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+        
+        .ministry-text p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            text-align: justify;
+        }
+        
+        .ministry-highlight {
+            background-color: rgba(106, 27, 154, 0.1);
+            padding: 20px;
+            border-left: 4px solid var(--primary-color);
+            margin: 20px 0;
+            border-radius: 0 var(--border-radius) var(--border-radius) 0;
+        }
+        
+        .ministry-highlight h3 {
+            color: var(--primary-dark);
+            margin-bottom: 10px;
+        }
+        
+        .ministry-list {
+            margin: 20px 0;
+            padding-left: 20px;
+        }
+        
+        .ministry-list li {
+            position: relative;
+            padding-left: 30px;
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+        
+        .ministry-list li::before {
+            content: "•";
+            color: var(--primary-color);
+            font-size: 1.5rem;
+            position: absolute;
+            left: 0;
+            top: -3px;
+        }
+        /* ===== BOTTOM CONTAINERS ===== */
+        
+        .bottom-containers {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            gap: 0;
+            position: relative;
+            margin: 80px 0;
+            padding: 0 20px;
+        }
+        
+        .bottom-container {
+            position: relative;
+            border-radius: var(--border-radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+            transition: var(--transition);
+            height: 500px;
+            width: 320px;
+            flex-shrink: 0;
+            z-index: 1;
+            margin: 0 -15px;
+        }
+        
+        .bottom-container:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        .bottom-container.watch-now {
+            width: 360px;
+            z-index: 2;
+            transform: scale(1.05);
+            margin: 0 -10px;
+        }
+        
+        .bottom-container.watch-now:hover {
+            transform: scale(1.03);
+        }
+        
+        .bottom-container:not(.watch-now):hover {
+            transform: translateY(-5px) scale(0.98);
+        }
+        
+        .bottom-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        
+        .bottom-container:hover .bottom-image {
+            transform: scale(1.05);
+        }
+        
+        .bottom-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .bottom-button {
+            display: inline-block;
+            padding: 12px 24px;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 50px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: var(--transition);
+        }
+        
+        .bottom-button:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-3px);
+        }
+        
+        .bottom-button i {
+            margin-left: 8px;
+        }
+        /* Join the Movement Section */
+        
+        .join-movement {
+            background-color: var(--primary-dark);
+            color: white;
+            padding: 80px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .join-movement::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('movement-bg.jpg') center/cover no-repeat;
+            opacity: 0.15;
+            z-index: 0;
+        }
+        
+        .join-container {
+            position: relative;
+            z-index: 1;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .join-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .join-header h2 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        .join-header p {
+            font-size: 1.5rem;
+            color: rgba(255, 255, 255, 0.9);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .join-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            justify-content: center;
+            margin-bottom: 40px;
+        }
+        
+        .join-text {
+            flex: 1;
+            min-width: 300px;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            text-align: center;
+        }
+        
+        .join-beliefs {
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: var(--border-radius-lg);
+            margin-top: 30px;
+        }
+        
+        .join-beliefs h3 {
+            text-align: center;
+            margin-bottom: 25px;
+            font-size: 1.8rem;
+            color: white;
+        }
+        
+        .beliefs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        
+        .belief-card {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: var(--border-radius);
+            transition: var(--transition);
+        }
+        
+        .belief-card:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+            transform: translateY(-5px);
+        }
+        
+        .belief-card h4 {
+            color: white;
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .belief-card h4 i {
+            margin-right: 10px;
+            color: var(--secondary-color);
+        }
+        
+        .belief-card p {
+            color: rgba(255, 255, 255, 0.9);
+        }
+        
+        .join-button {
+            text-align: center;
+            margin-top: 40px;
+        }
+        /* Responsive styles for Join the Movement */
+        
+        @media (max-width: 992px) {
+            .join-header h2 {
+                font-size: 2.2rem;
+            }
+            .join-header p {
+                font-size: 1.3rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .join-movement {
+                padding: 60px 0;
+            }
+            .join-header h2 {
+                font-size: 2rem;
+            }
+            .join-header p {
+                font-size: 1.2rem;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .join-movement {
+                padding: 50px 0;
+            }
+            .join-header h2 {
+                font-size: 1.8rem;
+            }
+            .join-header p {
+                font-size: 1.1rem;
+            }
+            .beliefs-grid {
+                grid-template-columns: 1fr;
+            }
+            .belief-card {
+                padding: 15px;
+            }
+            .belief-card h4 {
+                font-size: 1.1rem;
+            }
+        }
+        /* Weekly Schedule Container */
+        
+        .schedule-container {
+            background-color: var(--bg-white);
+            padding: 30px;
+            border-radius: var(--border-radius-lg);
+            box-shadow: var(--shadow-lg);
+            height: 100%;
+            transition: var(--transition);
+            overflow-y: auto;
+            max-height: 100%;
+        }
+        
+        .schedule-container:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .schedule-title {
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            background: var(--bg-white);
+            padding: 10px 0;
+            z-index: 1;
+        }
+        
+        .schedule-list {
+            list-style: none;
+        }
+        
+        .schedule-item {
+            padding: 15px 0;
+            border-bottom: 1px solid #eee;
+            transition: var(--transition);
+        }
+        
+        .schedule-item:hover {
+            background-color: rgba(106, 27, 154, 0.05);
+        }
+        
+        .schedule-day {
+            font-weight: 700;
+            color: var(--primary-color);
+            font-size: 1.1rem;
+            margin-right: 10px;
+        }
+        
+        .schedule-details {
+            list-style: none;
+            padding-left: 25px;
+            margin-top: 10px;
+            display: none;
+        }
+        
+        .schedule-details li {
+            position: relative;
+            padding-left: 25px;
+            margin-bottom: 8px;
+        }
+        
+        .schedule-details li::before {
+            content: "•";
+            color: var(--primary-color);
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+        
+        details[open] .schedule-details {
+            display: block;
+            animation: fadeIn 0.4s ease;
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        /* ===== ABOUT SECTIONS ===== */
+        
+        .about-section {
+            display: none;
+            background-color: var(--bg-white);
+            padding: 80px;
+            border-radius: var(--border-radius-lg);
+            margin: 80px 0;
+            box-shadow: var(--shadow-md);
+        }
+        
+        .about-section.active {
+            display: block;
+            animation: fadeInUp 0.6s ease;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+        
+        .about-img {
+            width: 350px;
+            height: 350px;
+            object-fit: cover;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-md);
+            flex-shrink: 0;
+        }
+        
+        .about-text {
+            flex: 1;
+        }
+        
+        .about-text h2 {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+        }
+        
+        .about-text p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+        
+        .verse {
+            font-style: italic;
+            color: var(--text-light);
+            padding-left: 20px;
+            border-left: 3px solid var(--primary-color);
+            margin: 1.5rem 0;
+        }
+        /* ===== SERMONS SECTION - ENHANCED ===== */
+        
+        .sermons-section {
+            display: none;
+            background-color: var(--bg-white);
+            padding: 60px 20px;
+            border-radius: var(--border-radius-lg);
+            margin: 60px 0;
+            box-shadow: var(--shadow-md);
+        }
+        
+        .sermons-section.active {
+            display: block;
+            animation: fadeInUp 0.6s ease;
+        }
+        
+        .sermons-container {
+            width: 100%;
+            max-width: 1000px;
+            margin: 0 auto;
+            border: none;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+        }
+        
+        .sermons-header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid var(--primary-color);
+        }
+        
+        .sermons-header h2 {
+            font-size: 2.2rem;
+            color: var(--primary-dark);
+            margin-bottom: 15px;
+        }
+        
+        .sermons-header p {
+            font-size: 1.1rem;
+            color: var(--text-medium);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .sermons-tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 30px;
+            border-bottom: 1px solid #eee;
+            flex-wrap: wrap;
+        }
+        
+        .sermons-tab {
+            padding: 12px 25px;
+            margin: 0 10px;
+            font-weight: 600;
+            color: var(--text-medium);
+            cursor: pointer;
+            transition: var(--transition);
+            position: relative;
+            border-bottom: 3px solid transparent;
+        }
+        
+        .sermons-tab:hover {
+            color: var(--primary-color);
+        }
+        
+        .sermons-tab.active {
+            color: var(--primary-color);
+            border-bottom: 3px solid var(--primary-color);
+        }
+        
+        .sermons-content {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        .sermons-content.active {
+            display: block;
+        }
+        
+        .sermons-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-bottom: 30px;
+        }
+        
+        .sermon-card {
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+            background-color: var(--bg-white);
+        }
+        
+        .sermon-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+        }
+        
+        .sermon-video-container {
+            position: relative;
+            border-radius: var(--border-radius) var(--border-radius) 0 0;
+            overflow: hidden;
+            height: 0;
+            padding-bottom: 56.25%;
+            /* 16:9 aspect ratio */
+        }
+        
+        .sermon-video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        .sermon-info {
+            padding: 20px;
+        }
+        
+        .sermon-title {
+            font-size: 1.2rem;
+            color: var(--primary-dark);
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+        
+        .sermon-meta {
+            display: flex;
+            justify-content: space-between;
+            color: var(--text-light);
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+        
+        .sermon-link {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: var(--transition);
+            text-align: center;
+            width: 100%;
+        }
+        
+        .sermon-link:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+        
+        .sermons-live-container {
+            position: relative;
+            margin-top: 40px;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .sermons-live-icon {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background-color: rgba(255, 0, 0, 0.8);
+            color: white;
+            padding: 8px 15px;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 0.9rem;
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            animation: pulse 1.5s infinite;
+        }
+        
+        .sermons-live-icon i {
+            margin-right: 8px;
+        }
+        
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+        
+        .sermon-bottom-video {
+            width: 100%;
+            border: none;
+            display: block;
+        }
+        /* ===== GIVING SECTION ===== */
+        
+        .giving-section {
+            display: none;
+            position: relative;
+            margin: 80px 0;
+        }
+        
+        .giving-section.active {
+            display: block;
+        }
+        
+        .giving-container {
+            position: relative;
+            width: 100%;
+            height: 75vh;
+            min-height: 500px;
+            background: url('sed.jpg') no-repeat center center;
+            background-size: cover;
+        }
+        
+        .giving-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+        
+        .giving-content {
+            position: absolute;
+            bottom: 100px;
+            left: 0;
+            width: 100%;
+            padding: 0 40px;
+            color: white;
+            z-index: 2;
+        }
+        
+        .giving-verse-container {
+            max-width: 600px;
+        }
+        
+        .giving-verse {
+            font-size: 2rem;
+            font-weight: 700;
+            font-style: italic;
+            margin-bottom: 1rem;
+            color: white;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+        }
+        
+        .giving-explanation {
+            font-size: 1.1rem;
+            font-style: italic;
+            margin-bottom: 2rem;
+            color: rgba(255, 255, 255, 0.9);
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        }
+        
+        .giving-button {
+            display: inline-block;
+            padding: 15px 30px;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 50px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+        }
+        
+        .giving-button:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-sm);
+        }
+        /* GIVING FORM STYLES */
+        
+        .giving-form-container {
+            display: none;
+            background-color: var(--bg-white);
+            padding: 60px 40px;
+            border-radius: var(--border-radius-lg);
+            box-shadow: var(--shadow-lg);
+            max-width: 800px;
+            margin: 40px auto;
+            position: relative;
+            z-index: 10;
+        }
+        
+        .giving-form-container.active {
+            display: block;
+            animation: slideDown 0.5s ease forwards;
+        }
+        
+        .giving-form-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .giving-form-header h3 {
+            color: var(--primary-color);
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+        
+        .giving-form-header p {
+            color: var(--text-medium);
+            font-size: 1.1rem;
+        }
+        
+        .giving-form-body {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group.full-width {
+            grid-column: span 2;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+        
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: var(--border-radius);
+            font-size: 16px;
+            transition: var(--transition);
+        }
+        
+        .form-group input:focus,
+        .form-group select:focus {
+            border-color: var(--primary-color);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(106, 27, 154, 0.2);
+        }
+        
+        .form-actions {
+            grid-column: span 2;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .payment-methods {
+            margin-top: 40px;
+            border-top: 1px solid #eee;
+            padding-top: 30px;
+        }
+        
+        .payment-method {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        .payment-method.active {
+            display: block;
+        }
+        
+        .payment-tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 30px;
+            gap: 10px;
+        }
+        
+        .payment-tab {
+            padding: 12px 24px;
+            background-color: #f5f5f5;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: 600;
+        }
+        
+        .payment-tab.active {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        .mpesa-instructions {
+            background-color: #f8f9fa;
+            border-radius: var(--border-radius);
+            padding: 25px;
+            margin-top: 30px;
+            border-left: 4px solid var(--primary-color);
+        }
+        
+        .mpesa-instructions h4 {
+            color: var(--primary-dark);
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+        }
+        
+        .mpesa-instructions ol {
+            padding-left: 20px;
+        }
+        
+        .mpesa-instructions li {
+            margin-bottom: 10px;
+            color: var(--text-medium);
+        }
+        
+        .mpesa-details {
+            background-color: #f0f0f0;
+            padding: 15px;
+            border-radius: var(--border-radius);
+            margin-top: 20px;
+        }
+        
+        .mpesa-details p {
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+        
+        .mpesa-details p span {
+            font-weight: normal;
+        }
+        /* NEW GIVING STYLES */
+        
+        .bank-logo {
+            width: 30px;
+            height: 30px;
+            vertical-align: middle;
+            margin-right: 10px;
+            border-radius: 50%;
+        }
+        
+        .payment-success {
+            display: none;
+            background-color: #4CAF50;
+            color: white;
+            padding: 20px;
+            border-radius: var(--border-radius);
+            text-align: center;
+            margin-top: 20px;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        .payment-processing {
+            display: none;
+            text-align: center;
+            margin: 20px 0;
+        }
+        
+        .spinner {
+            border: 4px solid rgba(0, 0, 0, 0.1);
+            border-radius: 50%;
+            border-top: 4px solid var(--primary-color);
+            width: 30px;
+            height: 30px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 15px;
+        }
+        
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+        /* ===== REWARDS CAROUSEL ===== */
+        
+        .rewards-carousel {
+            position: relative;
+            width: 100%;
+            max-width: 800px;
+            margin: 40px auto;
+            overflow: hidden;
+            border-radius: var(--border-radius-lg);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .carousel-container {
+            position: relative;
+            width: 100%;
+            height: 500px;
+            overflow: hidden;
+        }
+        
+        .carousel-track {
+            display: flex;
+            height: 100%;
+            transition: transform 0.5s ease;
+        }
+        
+        .carousel-slide {
+            min-width: 100%;
+            position: relative;
+        }
+        
+        .carousel-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .carousel-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 15px;
+            text-align: center;
+        }
+        
+        .carousel-nav {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            transform: translateY(-50%);
+            z-index: 10;
+        }
+        
+        .carousel-btn {
+            background: rgba(255, 255, 255, 0.5);
+            border: none;
+            color: var(--primary-color);
+            font-size: 1.5rem;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: var(--transition);
+            margin: 0 15px;
+        }
+        
+        .carousel-btn:hover {
+            background: white;
+        }
+        
+        .carousel-dots {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .carousel-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #ccc;
+            margin: 0 5px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .carousel-dot.active {
+            background: var(--primary-color);
+            transform: scale(1.2);
+        }
+        /* ===== FOOTER ===== */
+        
+        footer {
+            background: linear-gradient(145deg, #0f0c29, #302b63, #24243e);
+            color: white;
+            padding: 80px 0 30px;
+            position: relative;
+        }
+        
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+        
+        .footer-col h3 {
+            color: var(--secondary-color);
+            font-size: 1.5rem;
+            margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-col h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--secondary-color), #e52e71);
+            border-radius: 3px;
+        }
+        
+        .footer-col p {
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 15px;
+        }
+        
+        .footer-col a {
+            color: rgba(255, 255, 255, 0.9);
+            transition: var(--transition);
+            display: block;
+            margin-bottom: 10px;
+        }
+        
+        .footer-col a:hover {
+            color: var(--secondary-color);
+            transform: translateX(5px);
+        }
+        
+        .footer-map {
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            height: 250px;
+            transition: var(--transition);
+        }
+        
+        .footer-map:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+        }
+        
+        .footer-map img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.7);
+        }
+        
+        .footer-bottom a {
+            color: var(--secondary-color);
+            font-weight: 600;
+        }
+        /* ===== RESPONSIVE STYLES ===== */
+        
+        @media (max-width: 1200px) {
+            .hero-title {
+                font-size: 2.4rem;
+            }
+            .hero-right {
+                padding: 40px;
+            }
+            .about-content {
+                gap: 30px;
+            }
+            .about-img {
+                width: 300px;
+                height: 300px;
+            }
+            .giving-verse {
+                font-size: 1.8rem;
+            }
+            .ministry-section {
+                padding: 60px;
+            }
+            .sermons-section {
+                padding: 60px 20px;
+            }
+        }
+        
+        @media (max-width: 992px) {
+            .hero-container {
+                flex-direction: column;
+            }
+            .hero-left {
+                width: 100%;
+                height: 400px;
+            }
+            .hero-right {
+                margin-left: 0;
+                margin-top: -40px;
+                width: 90%;
+            }
+            .about-content {
+                flex-direction: column;
+            }
+            .about-img {
+                width: 100%;
+                max-width: 400px;
+                margin-bottom: 30px;
+            }
+            .section {
+                padding: 60px 0;
+            }
+            .about-section {
+                padding: 60px;
+            }
+            .sermons-section {
+                padding: 60px 20px;
+            }
+            .bottom-containers {
+                flex-direction: column;
+                align-items: center;
+                gap: 30px;
+                margin: 60px 0;
+            }
+            .bottom-container {
+                width: 100%;
+                max-width: 500px;
+                height: 400px;
+                margin: 0;
+                transform: none !important;
+            }
+            .bottom-container.watch-now {
+                width: 100%;
+                max-width: 550px;
+                height: 450px;
+                margin: 20px 0;
+                transform: none !important;
+            }
+            .bottom-container.watch-now:hover {
+                transform: none !important;
+            }
+            .giving-content {
+                padding: 0 30px;
+            }
+            .giving-verse {
+                font-size: 1.6rem;
+            }
+            .giving-form-body {
+                grid-template-columns: 1fr;
+            }
+            .form-group.full-width {
+                grid-column: span 1;
+            }
+            .form-actions {
+                grid-column: span 1;
+                flex-direction: column;
+            }
+            .ministry-section {
+                padding: 50px;
+            }
+            .ministry-header {
+                height: 150px;
+            }
+            .ministry-text {
+                margin-top: 170px;
+            }
+            .sermons-tabs {
+                flex-wrap: wrap;
+            }
+            .sermons-tab {
+                margin: 5px;
+                padding: 10px 15px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+            nav {
+                position: fixed;
+                top: 80px;
+                left: 0;
+                width: 100%;
+                background-color: rgba(0, 0, 0, 0.95);
+                padding: 20px;
+                box-shadow: var(--shadow-md);
+                transform: translateY(-150%);
+                opacity: 0;
+                transition: all 0.4s ease;
+                z-index: 999;
+                max-height: calc(100vh - 80px);
+                overflow-y: auto;
+            }
+            nav.active {
+                transform: translateY(0);
+                opacity: 1;
+            }
+            nav ul {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+            }
+            nav ul li {
+                margin: 0;
+                width: 100%;
+            }
+            nav ul li a {
+                display: block;
+                padding: 12px 15px;
+                font-size: 16px;
+            }
+            .dropdown {
+                width: 100%;
+            }
+            .dropdown-btn {
+                width: 100%;
+                text-align: left;
+                padding: 12px 15px;
+                font-size: 16px;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+            .dropdown-content {
+                position: static;
+                box-shadow: none;
+                background-color: transparent;
+                opacity: 1;
+                visibility: visible;
+                transform: none;
+                display: none;
+                margin-top: 10px;
+                padding-left: 20px;
+            }
+            .dropdown.active .dropdown-content {
+                display: block;
+            }
+            .dropdown-content a {
+                color: white;
+                padding: 10px 0;
+                border-left: none;
+            }
+            .dropdown-content a:hover {
+                background-color: transparent;
+                color: var(--primary-light);
+                padding-left: 0;
+            }
+            .hero {
+                min-height: auto;
+                padding: 120px 0 60px;
+                height: auto;
+            }
+            .hero-title {
+                font-size: 2rem;
+            }
+            .hero-buttons {
+                flex-direction: column;
+            }
+            .btn {
+                width: 100%;
+                text-align: center;
+            }
+            .about-section {
+                padding: 40px;
+            }
+            .sermons-section {
+                padding: 40px 20px;
+            }
+            .section-title {
+                font-size: 2rem;
+            }
+            .carousel-container {
+                height: 400px;
+            }
+            .giving-container {
+                height: 60vh;
+                min-height: 400px;
+            }
+            .giving-content {
+                bottom: 60px;
+                padding: 0 20px;
+            }
+            .giving-verse {
+                font-size: 1.4rem;
+            }
+            .giving-explanation {
+                font-size: 1rem;
+            }
+            .giving-form-container {
+                padding: 40px 20px;
+            }
+            .payment-tabs {
+                flex-direction: column;
+                align-items: center;
+            }
+            .ministry-section {
+                padding: 40px;
+            }
+            .ministry-header {
+                height: 120px;
+            }
+            .ministry-header-title {
+                font-size: 2rem;
+            }
+            .ministry-text {
+                margin-top: 140px;
+                padding: 20px;
+            }
+            .sermons-header h2 {
+                font-size: 1.8rem;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .hero-left {
+                height: 300px;
+            }
+            .hero-right {
+                padding: 30px;
+                width: 100%;
+            }
+            .about-section {
+                padding: 30px;
+                margin: 40px 0;
+            }
+            .sermons-section {
+                padding: 30px 15px;
+                margin: 40px 0;
+            }
+            /* Modified bishop image for mobile */
+            .about-img {
+                width: 150px;
+                height: 150px;
+                border-radius: 50%;
+                margin: 0 auto 20px;
+                float: right;
+                margin-left: 20px;
+                margin-bottom: 0;
+            }
+            /* Clear float for text */
+            .about-text {
+                clear: both;
+                padding-top: 20px;
+            }
+            .footer-container {
+                grid-template-columns: 1fr;
+            }
+            .carousel-btn {
+                width: 40px;
+                height: 40px;
+                font-size: 1.2rem;
+                margin: 0 5px;
+            }
+            .carousel-container {
+                height: 300px;
+            }
+            .bottom-container {
+                height: 350px;
+            }
+            .bottom-container.watch-now {
+                height: 400px;
+            }
+            .schedule-container {
+                height: auto;
+            }
+            .giving-container {
+                height: 50vh;
+                min-height: 350px;
+            }
+            .giving-verse {
+                font-size: 1.2rem;
+            }
+            .giving-button {
+                padding: 12px 24px;
+            }
+            .giving-form-container {
+                padding: 30px 15px;
+            }
+            .giving-form-header h3 {
+                font-size: 1.5rem;
+            }
+            .ministry-section {
+                padding: 30px 20px;
+            }
+            .ministry-highlight {
+                padding: 15px;
+            }
+            .ministry-header {
+                height: 100px;
+            }
+            .ministry-header-title {
+                font-size: 1.5rem;
+            }
+            .ministry-text {
+                margin-top: 120px;
+                padding: 15px;
+            }
+            .sermons-header h2 {
+                font-size: 1.5rem;
+            }
+            .sermons-tab {
+                padding: 8px 12px;
+                font-size: 0.9rem;
+            }
+        }
+        /* Community Section Styles */
+        
+        .community-container {
+            position: relative;
+            width: 100%;
+            min-height: 500px;
+            background-size: cover;
+            background-position: center;
+            border-radius: var(--border-radius-lg);
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .community-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, rgba(255, 255, 255, 0.8) 0%, rgba(106, 27, 154, 0.6) 100%);
+        }
+        
+        .community-text {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            padding: 40px;
+            text-align: center;
+            color: var(--text-dark);
+        }
+        
+        .community-title {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary-dark);
+        }
+        
+        .community-description {
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+        
+        .community-verse {
+            font-size: 1.2rem;
+            margin: 2rem 0;
+            color: var(--primary-dark);
+            font-style: italic;
+        }
+        
+        .community-explanation {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        /* Animation Classes */
+        
+        .animate-slide-right {
+            animation: slideRight 0.8s ease-out forwards;
+        }
+        
+        .animate-slide-left {
+            animation: slideLeft 0.8s ease-out forwards;
+            animation-delay: 0.3s;
+            opacity: 0;
+        }
+        
+        .animate-slide-up {
+            animation: slideUp 0.8s ease-out forwards;
+            animation-delay: 0.6s;
+            opacity: 0;
+        }
+        
+        @keyframes slideRight {
+            from {
+                transform: translateX(-50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+        
+        @keyframes slideLeft {
+            from {
+                transform: translateX(50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+        
+        @keyframes slideUp {
+            from {
+                transform: translateY(50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+        /* Adopt a Family Section Styles */
+        
+        .adopt-family-container {
+            position: relative;
+            width: 100%;
+            min-height: 500px;
+            background-size: cover;
+            background-position: center;
+            border-radius: var(--border-radius-lg);
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .adopt-family-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, rgba(255, 255, 255, 0.8) 0%, rgba(106, 27, 154, 0.6) 100%);
+        }
+        
+        .adopt-family-text {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            padding: 40px;
+            text-align: center;
+            color: var(--text-dark);
+        }
+        
+        .adopt-family-title {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary-dark);
+        }
+        
+        .adopt-family-description {
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+        
+        .adopt-family-verse {
+            font-size: 1.2rem;
+            margin: 2rem 0;
+            color: var(--primary-dark);
+            font-style: italic;
+        }
+        
+        .adopt-family-explanation {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Video Background -->
+    <div class="video-background">
+        <video autoplay muted loop>
+            <source src="bg.mp4" type="video/mp4">
+        </video>
+    </div>
+    <div class="overlay"></div>
+
+    <!-- Header -->
+    <header id="header">
+        <div class="container header-container">
+            <div class="logo">
+                <img src="logo.jpg" alt="Foundation of Praise Ministries">
+            </div>
+
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+
+            <nav id="mainNav">
+                <ul>
+                    <li><a href="#" id="homeLink" class="active">Home</a></li>
+                    <li class="dropdown">
+    <button class="dropdown-btn" id="ministryBtn">Ministry <i class="fas fa-chevron-down"></i></button>
+    <div class="dropdown-content">
+        <a href="#" id="historyLink">History</a>
+        <a href="#" id="leadershipLink">Leadership</a>
+        <a href="#" id="departmentsLink">Departments</a>
+        
+        <!-- Branches with nested dropdown -->
+        <div class="dropdown-nested">
+            <button class="dropdown-btn nested-btn">Branches <i class="fas fa-chevron-right"></i></button>
+            <div class="dropdown-content nested-content">
+                <a href="#">Kiambu</a>
+                <a href="#">Busia</a>
+                <a href="#">Naivasha</a>
+            </div>
+        </div>
+
+        <!-- Associates with nested dropdown -->
+        <div class="dropdown-nested">
+            <button class="dropdown-btn nested-btn">Associates <i class="fas fa-chevron-right"></i></button>
+            <div class="dropdown-content nested-content">
+                <a href="#">WEPA</a>
+                <a href="#">Alpha Gospel Band</a>
+            </div>
+        </div>
+    </div>
+</li>
+                    <li class="dropdown">
+                        <button class="dropdown-btn" id="aboutBtn">About Us <i class="fas fa-chevron-down"></i></button>
+                        <div class="dropdown-content">
+                            <a href="#" id="visionLink">Vision</a>
+                            <a href="#" id="missionLink">Mission</a>
+                            <a href="#" id="coreValuesLink">Core Values</a>
+                        </div>
+                    </li>
+                    <li><a href="#" id="givingLink">Giving</a></li>
+                    <li><a href="#" id="sermonsLink">Sermons</a></li>
+                    <li class="dropdown">
+                        <button class="dropdown-btn" id="eventsBtn">Events <i class="fas fa-chevron-down"></i></button>
+                        <div class="dropdown-content">
+                            <a href="#" id="rewardsLink">Rewards</a>
+                            <a href="#" id="communityLink">Community</a>
+                            <a href="#" id="adoptFamilyLink">Adopt a Family</a>
+                            <a href="#" id="resourcesLink">Resources</a>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Home Content -->
+        <div id="homeContent" class="home-content active">
+            <!-- Hero Section -->
+            <section class="hero">
+                <div class="container hero-container">
+                    <div class="hero-left">
+                        <img src="wel.jpg" alt="Foundation of Praise Ministries" class="hero-img">
+                    </div>
+                    <div class="hero-right">
+                        <h1 class="hero-title">Foundation of <span>Praise</span> Ministries</h1>
+                        <div class="hero-divider"></div>
+                        <ul class="hero-list">
+                            <li><i class="fas fa-check-circle"></i> A place of worship and spiritual growth</li>
+                            <li><i class="fas fa-check-circle"></i> A community of believers</li>
+                            <li><i class="fas fa-check-circle"></i> A home for everyone</li>
+                        </ul>
+                        <p class="hero-text"><em>"A place where everybody matters"</em></p>
+                        <div class="hero-buttons">
+                            <a href="#" class="btn btn-primary" id="learnMoreBtn">Learn More</a>
+                            <a href="#" class="btn btn-outline" id="ourServicesBtn">Our Ministry</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Bottom Containers Section -->
+            <section class="section">
+                <div class="container">
+                    <div class="bottom-containers">
+                        <!-- Weekly Schedule Container (Left) -->
+                        <div class="bottom-container">
+                            <div class="schedule-container">
+                                <h3 class="schedule-title">Weekly Schedule</h3>
+                                <ul class="schedule-list">
+                                    <li class="schedule-item">
+                                        <details>
+                                            <summary>
+                                                <span class="schedule-day">Sunday</span> - Main Service Day
+                                            </summary>
+                                            <ul class="schedule-details">
+                                                <li>Intercessory: 6:00am - 8:00am</li>
+                                                <li>Bible Study: 8:30am - 9:30am</li>
+                                                <li>Praise and Worship: 10:00am - 11:00am</li>
+                                                <li>Announcements: 11:00am - 11:30am</li>
+                                                <li>Word Session: 11:30am - 12:30pm</li>
+                                            </ul>
+                                        </details>
+                                    </li>
+                                    <li class="schedule-item">
+                                        <span class="schedule-day">Monday</span> - Win souls and visit the sick
+                                    </li>
+                                    <li class="schedule-item">
+                                        <span class="schedule-day">Tuesday</span> - Lady's Fellowship
+                                    </li>
+                                    <li class="schedule-item">
+                                        <span class="schedule-day">Wednesday</span> - Home Fellowship
+                                    </li>
+                                    <li class="schedule-item">
+                                        <span class="schedule-day">Thursday</span> - Discipleship
+                                    </li>
+                                    <li class="schedule-item">
+                                        <details>
+                                            <summary>
+                                                <span class="schedule-day">Friday</span> - Special Events
+                                            </summary>
+                                            <ul class="schedule-details">
+                                                <li>Every third Friday: Overnight Kesha</li>
+                                                <li>Monthly prayer marathon</li>
+                                            </ul>
+                                        </details>
+                                    </li>
+                                    <li class="schedule-item">
+                                        <span class="schedule-day">Saturday</span> - Cleaning for Sunday Service
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Watch Now Container (Middle) -->
+                        <div class="bottom-container watch-now">
+                            <img src="onl.jpg" alt="Watch Our Services Online" class="bottom-image">
+                            <div class="bottom-overlay">
+                                <a href="#" class="bottom-button" id="watchNowBtn">
+                                    Watch Now <i class="fas fa-arrow-right"></i>
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Register Now Container (Right) -->
+                        <div class="bottom-container">
+                            <img src="reg.jpg" alt="Register for Events" class="bottom-image">
+                            <div class="bottom-overlay">
+                                <a href="https://docs.google.com/forms/d/e/1FAIpQLSeSymKJmpquyjnYU5p48_WLn8Z-anmvJTzc76yq8q8U7cp9KA/viewform?usp=sharing&ouid=107311637396736791223" class="bottom-button" target="_blank">
+                                    Register Now <i class="fas fa-arrow-right"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Join the Movement Section -->
+            <section class="join-movement">
+                <div class="join-container">
+                    <div class="join-header">
+                        <h2>Join the Movement</h2>
+                        <p>Foundation Movement</p>
+                    </div>
+
+                    <div class="join-content">
+                        <div class="join-text">
+                            <p>Whether you're in Nairobi or any branch near you across Kenya—there's a place for you in this amazing family. Come experience the Word, the Spirit, and the power of God like never before.</p>
+                            <p>We are a Church of praise. Come and experience love, acceptance, and transformation in a community where everybody matters.</p>
+                        </div>
+                    </div>
+
+                    <div class="join-beliefs">
+                        <h3>What We Believe</h3>
+                        <div class="beliefs-grid">
+                            <div class="belief-card">
+                                <h4><i class="fas fa-cross"></i> The Bible</h4>
+                                <p>We believe the Bible is the inspired, infallible, authoritative Word of God and the only rule for faith and conduct.</p>
+                            </div>
+
+                            <div class="belief-card">
+                                <h4><i class="fas fa-church"></i> The Church</h4>
+                                <p>We believe in the universal Church, a living spiritual body of which Christ is the head and all regenerated persons are members.</p>
+                            </div>
+
+                            <div class="belief-card">
+                                <h4><i class="fas fa-dove"></i> The Holy Spirit</h4>
+                                <p>We believe in the present ministry of the Holy Spirit by whose indwelling the Christian is enabled to live a godly life.</p>
+                            </div>
+
+                            <div class="belief-card">
+                                <h4><i class="fas fa-heart"></i> Salvation</h4>
+                                <p>We believe that salvation is by grace through faith in Christ alone, not by works, and is available to all who believe.</p>
+                            </div>
+
+                            <div class="belief-card">
+                                <h4><i class="fas fa-water"></i> Baptism</h4>
+                                <p>We believe in water baptism by immersion after repentance and acceptance of Christ as personal Savior.</p>
+                            </div>
+
+                            <div class="belief-card">
+                                <h4><i class="fas fa-bible"></i> The Trinity</h4>
+                                <p>We believe in one God, eternally existent in three persons: Father, Son, and Holy Spirit.</p>
+                            </div>
+
+                            <div class="belief-card">
+                                <h4><i class="fas fa-people-arrows"></i> Fellowship</h4>
+                                <p>We believe in the spiritual unity of believers in our Lord Jesus Christ and the importance of fellowship.</p>
+                            </div>
+
+                            <div class="belief-card">
+                                <h4><i class="fas fa-arrow-up"></i> Resurrection</h4>
+                                <p>We believe in the resurrection of both the saved and the lost—the saved to eternal life and the lost to eternal separation from God.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="join-button">
+                        <a href="
+                         https://docs.google.com/forms/d/e/1FAIpQLSeSymKJmpquyjnYU5p48_WLn8Z-anmvJTzc76yq8q8U7cp9KA/viewform?usp=sharing&ouid=107311637396736791223" class="btn btn-primary" id="joinUsBtn">Join Us Today</a>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Ministry Sections -->
+        <div id="historyContent" class="ministry-section">
+            <div class="container">
+                <div class="ministry-content">
+                    <div class="ministry-header">
+                        <img src="hist.jpg" alt="Church History" class="ministry-header-image">
+                        <div class="ministry-header-overlay"></div>
+                        <h2 class="ministry-header-title">Our History</h2>
+                    </div>
+                    <div class="ministry-text">
+                        <p>The Foundation of Praise Ministries was founded on 4th June 2007. The founders of the ministry are Rev. Wilson Mujukane and his lovely wife Jessica Nakhungu. This ministry was born through a vision and prophecy shared to the servant
+                            of God two years before its inception.</p>
+
+                        <p>The name of the Ministry was revealed to the servant of God through scripture; in the book of Psalms 11:3. The reading that elaborates, "If the foundations be destroyed, what can the righteous do?" Together with the early congregants
+                            that joined in the fellowship, the belief that the Lord has called us all to rebuild lives to all who seek refuge continues to impact and transform many that associate with the ministry. In celebration of praises in redemption,
+                            the name Foundation of Praise continues to complete testimonies as membership increases in number.</p>
+
+                        <div class="ministry-highlight">
+                            <h3>Our Journey</h3>
+                            <p>For many years, the church has witnessed transformational evolution of lives through developments and progress in; education, marriage, business, personal and community projects as well as spiritual nourishment. Many souls
+                                have been transformed, restored, mentored and nurtured through Biblical teachings, stories and real life experiences.</p>
+                            <p>The Lord has been gracious and faithful in helping members contribute and donate throughout the course of church programs. With the same, the church has expanded over time as testimonies continue to grow.</p>
+                        </div>
+
+                        <div class="ministry-highlight">
+                            <h3>Success</h3>
+                            <p>The church has expanded its dreams and objectives through impacts of many lives with aims to restore unity among community members. Through continuous fellowships, the church has promoted harmony, sense of belonging and ownership
+                                across diverse cultures across the nation. Therefore, the Foundation of Praise remains a proud refuge where everyone matters.</p>
+                            <p>The church has so far established departments in categories that are active till date. They are; Family outreach, Sunday school ministry, Youth ministry, Ladies' ministry, Men's ministry and the Elder's ministry.</p>
+                        </div>
+
+                        <div class="ministry-highlight">
+                            <h3>Future Plans</h3>
+                            <ul class="ministry-list">
+                                <li>To train and empower and equip servants of God with necessary tools to win souls to Jesus Christ</li>
+                                <li>To establish training Centers</li>
+                                <li>To be a disciple making church in the community</li>
+                                <li>To involve the government and community promote sustainable development goals</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="leadershipContent" class="ministry-section">
+            <div class="container">
+                <div class="ministry-content">
+                    <h2 class="section-title">Our Leadership</h2>
+                    <div class="ministry-text">
+                        <p>Leadership content will go here...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="departmentsContent" class="ministry-section">
+            <div class="container">
+                <div class="ministry-content">
+                    <h2 class="section-title">Our Departments</h2>
+                    <div class="ministry-text">
+                        <p>Departments content will go here...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- About Sections -->
+        <div id="visionContent" class="about-section">
+            <div class="about-content">
+                <img src="bish.jpg" alt="Bishop" class="about-img">
+                <div class="about-text">
+                    <h2>Vision</h2>
+                    <p>TO REACH AND SHARE THE GOOD NEWS OF THE GOSPEL AND BRING HOPE TO THE HOPELESS</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="missionContent" class="about-section">
+            <div class="about-content">
+                <img src="bish.jpg" alt="Bishop" class="about-img">
+                <div class="about-text">
+                    <h2>Mission</h2>
+                    <p>TO GO INTO ALL THE WORLD AND PREACH THE WORD OF GOD, TRANSFORMING LIVES THROUGH THE MESSAGE OF SALVATION, HOPE AND LOVE IN JESUS CHRIST.</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="coreValuesContent" class="about-section">
+            <div class="about-content">
+                <img src="bish.jpg" alt="Bishop" class="about-img">
+                <div class="about-text">
+                    <h2>Core Values</h2>
+
+                    <h3>BIBLICAL FOUNDATION</h3>
+                    <p class="verse">"All scripture is given by inspiration of God, and is profitable for doctrine, for reproof, for correction, for instruction in righteousness" (2 Timothy 3:16 KJV)</p>
+
+                    <h3>EVANGELISM</h3>
+                    <p class="verse">"Go ye therefore, and teach all nations, baptizing them in the name of the Father, and of the Son, and of the Holy Ghost: Teaching them to observe all things whatsoever I have commanded you" (Matthew 28:19-20 KJV)</p>
+
+                    <h3>PRAYER</h3>
+                    <p class="verse">"Confess your faults one to another, and pray one for another, that ye may be healed. The effectual fervent prayer of a righteous man availeth much" (James 5:16 KJV)</p>
+
+                    <h3>HOLINESS</h3>
+                    <p class="verse">"But as he which hath called you is holy, so be ye holy in all manner of conversation; Because it is written, Be ye holy; for I am holy" (1 Peter 1:15-16 KJV)</p>
+
+                    <h3>LOVE</h3>
+                    <p class="verse">"A new commandment I give unto you, That ye love one another; as I have loved you, that ye also love one another" (John 13:34 KJV)</p>
+
+                    <h3>UNITY</h3>
+                    <p class="verse">"Behold, how good and how pleasant it is for brethren to dwell together in unity!" (Psalm 133:1 KJV)</p>
+
+                    <h3>STEWARDSHIP</h3>
+                    <p class="verse">"Moreover it is required in stewards, that a man be found faithful" (1 Corinthians 4:2 KJV)</p>
+
+                    <p><em><strong>A PLACE WHERE EVERYBODY MATTERS</strong></em></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Enhanced Sermons Section -->
+        <div id="sermonsContent" class="sermons-section">
+            <div class="container">
+                <div class="sermons-header">
+                    <h2>Our Sermons & Teachings</h2>
+                    <p>Watch, listen and be transformed by the word of God. Access our latest sermons and Bible study sessions.</p>
+                </div>
+
+                <div class="sermons-tabs">
+                    <div class="sermons-tab active" data-tab="live">Live Services</div>
+                    <div class="sermons-tab" data-tab="recent">Recent Sermons</div>
+                    <div class="sermons-tab" data-tab="bible-study">Bible Studies</div>
+                </div>
+
+                <!-- Live Services Content -->
+                <div class="sermons-content active" id="liveContent">
+                    <div class="sermons-grid">
+                        <!-- Bible Study Live -->
+                        <div class="sermon-card">
+                            <div class="sermon-video-container">
+                                <video src="tch.mp4" controls class="sermon-video" poster="bible-study-thumb.jpg"></video>
+                            </div>
+                            <div class="sermon-info">
+                                <h3 class="sermon-title">Sunday Bible Study</h3>
+                                <div class="sermon-meta">
+                                    <span><i class="far fa-clock"></i> Every Sunday 8:45am-9:45am</span>
+                                </div>
+                                <a href="https://www.facebook.com/share/g/1G9FWE7SQM/" class="sermon-link" target="_blank">
+                                    Join Live <i class="fas fa-external-link-alt"></i>
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Main Service Live -->
+                        <div class="sermon-card">
+                            <div class="sermon-video-container">
+                                <video src="pch.mp4" controls class="sermon-video" poster="service-thumb.jpg"></video>
+                            </div>
+                            <div class="sermon-info">
+                                <h3 class="sermon-title">Sunday Main Service</h3>
+                                <div class="sermon-meta">
+                                    <span><i class="far fa-clock"></i> Every Sunday 11:30am-12:30pm</span>
+                                </div>
+                                <a href="https://www.facebook.com/share/g/1G9FWE7SQM/" class="sermon-link" target="_blank">
+                                    Join Live <i class="fas fa-external-link-alt"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Worship Experience -->
+                    <div class="sermons-live-container">
+                        <div class="sermons-live-icon">
+                            <i class="fas fa-play"></i> LIVE WORSHIP
+                        </div>
+                        <video src="pnw.mp4" controls class="sermon-bottom-video" poster="worship-thumb.jpg"></video>
+                        <div class="sermon-info" style="padding: 20px; background: white;">
+                            <h3 class="sermon-title">Sunday Worship Experience</h3>
+                            <div class="sermon-meta">
+                                <span><i class="far fa-clock"></i> Every Sunday 10:00am-11:00am</span>
+                            </div>
+                            <a href="https://maps.app.goo.gl/jQypDatGmmi7vhwE9" class="sermon-link" target="_blank">
+                                Join Us In Person <i class="fas fa-map-marker-alt"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recent Sermons Content -->
+                <div class="sermons-content" id="recentContent">
+                    <div class="sermons-grid">
+                        <!-- Sample sermon 1 -->
+                        <div class="sermon-card">
+                            <div class="sermon-video-container">
+                                <video src="sermon1.mp4" controls class="sermon-video" poster="sermon1-thumb.jpg"></video>
+                            </div>
+                            <div class="sermon-info">
+                                <h3 class="sermon-title">The Power of Faith</h3>
+                                <div class="sermon-meta">
+                                    <span><i class="far fa-calendar"></i> June 15, 2025</span>
+                                    <span><i class="fas fa-user"></i> Bishop Wilson</span>
+                                </div>
+                                <a href="#" class="sermon-link">
+                                    Watch Full Sermon <i class="fas fa-play"></i>
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Sample sermon 2 -->
+                        <div class="sermon-card">
+                            <div class="sermon-video-container">
+                                <video src="sermon2.mp4" controls class="sermon-video" poster="sermon2-thumb.jpg"></video>
+                            </div>
+                            <div class="sermon-info">
+                                <h3 class="sermon-title">Walking in Love</h3>
+                                <div class="sermon-meta">
+                                    <span><i class="far fa-calendar"></i> June 8, 2025</span>
+                                    <span><i class="fas fa-user"></i> Pastor Eben</span>
+                                </div>
+                                <a href="#" class="sermon-link">
+                                    Watch Full Sermon <i class="fas fa-play"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bible Studies Content -->
+                <div class="sermons-content" id="bibleStudyContent">
+                    <div class="sermons-grid">
+                        <!-- Sample study 1 -->
+                        <div class="sermon-card">
+                            <div class="sermon-video-container">
+                                <video src="study1.mp4" controls class="sermon-video" poster="study1-thumb.jpg"></video>
+                            </div>
+                            <div class="sermon-info">
+                                <h3 class="sermon-title">Understanding Grace</h3>
+                                <div class="sermon-meta">
+                                    <span><i class="far fa-calendar"></i> June 12, 2025</span>
+                                    <span><i class="fas fa-user"></i> Elder Mark</span>
+                                </div>
+                                <a href="#" class="sermon-link">
+                                    Watch Study <i class="fas fa-play"></i>
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Sample study 2 -->
+                        <div class="sermon-card">
+                            <div class="sermon-video-container">
+                                <video src="study2.mp4" controls class="sermon-video" poster="study2-thumb.jpg"></video>
+                            </div>
+                            <div class="sermon-info">
+                                <h3 class="sermon-title">The Book of Romans</h3>
+                                <div class="sermon-meta">
+                                    <span><i class="far fa-calendar"></i> June 5, 2025</span>
+                                    <span><i class="fas fa-user"></i> Bishop Wilson</span>
+                                </div>
+                                <a href="#" class="sermon-link">
+                                    Watch Study <i class="fas fa-play"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Giving Section -->
+        <div id="givingContent" class="giving-section">
+            <div class="giving-container">
+                <div class="giving-overlay"></div>
+                <div class="giving-content">
+                    <div class="giving-verse-container">
+                        <h2 class="giving-verse">"Each of you should give what you have decided in your heart to give, not reluctantly or under compulsion, for God loves a cheerful giver."</h2>
+                        <p class="giving-explanation">2 Corinthians 9:7 reminds us that giving is an act of worship, done joyfully from the heart.</p>
+                        <button class="giving-button" id="giveNowBtn">Give Now</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Giving Form Container -->
+            <div class="giving-form-container" id="givingFormContainer">
+                <div class="giving-form-header">
+                    <h3>Support Our Ministry</h3>
+                    <p>Your generous donation helps us spread the gospel and support our community</p>
+                </div>
+
+                <form id="donationForm">
+                    <div class="giving-form-body">
+                        <div class="form-group">
+                            <label for="donorName">Full Name</label>
+                            <input type="text" id="donorName" placeholder="Enter your full name" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="donorPhone">Phone Number (M-Pesa)</label>
+                            <input type="tel" id="donorPhone" placeholder="0712345678" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="donationAmount">Amount (KES)</label>
+                            <input type="number" id="donationAmount" placeholder="Enter amount" min="1" required>
+                        </div>
+
+                        <div class="form-group full-width">
+                            <label for="donationPurpose">Purpose of Donation</label>
+                            <select id="donationPurpose" required>
+                                <option value="">Select purpose</option>
+                                <option value="tithes">Tithes</option>
+                                <option value="offering">Offering</option>
+                                <option value="building">Building Fund</option>
+                                <option value="missions">Missions</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-primary" id="submitDonationBtn">Proceed to Payment</button>
+                            <button type="button" class="btn btn-outline" id="cancelDonationBtn">Cancel</button>
+                        </div>
+
+                        <div class="payment-processing" id="paymentProcessing">
+                            <div class="spinner"></div>
+                            <p>Processing your payment...</p>
+                        </div>
+
+                        <div class="payment-success" id="paymentSuccess">
+                            <i class="fas fa-check-circle" style="font-size: 3rem; margin-bottom: 15px;"></i>
+                            <h3>Payment Successful!</h3>
+                            <p>Thank you for your generous donation.</p>
+                            <p>You will receive an M-Pesa confirmation shortly.</p>
+                        </div>
+                    </div>
+
+                    <div class="payment-methods">
+                        <div class="payment-tabs">
+                            <div class="payment-tab active" data-method="mpesa">M-Pesa</div>
+                            <div class="payment-tab" data-method="bank">Bank Transfer</div>
+                        </div>
+
+                        <div class="payment-method active" id="mpesaMethod">
+                            <div class="mpesa-instructions">
+                                <h4>M-Pesa Payment Instructions</h4>
+                                <ol>
+                                    <li>Fill in your details and donation amount above</li>
+                                    <li>Click "Proceed to Payment" button</li>
+                                    <li>You will receive an M-Pesa push notification</li>
+                                    <li>Enter your M-Pesa PIN to complete the transaction</li>
+                                    <li>You will receive a confirmation message</li>
+                                </ol>
+
+                                <div class="mpesa-details">
+                                    <p>Paybill Number: <span>879011</span></p>
+                                    <p>Account Number: <span>Your full name</span></p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="payment-method" id="bankMethod">
+                            <p>For bank transfers, please use the following details:</p>
+                            <div class="mpesa-details">
+                                <p>Bank Name: <span><img src="smep.png" class="bank-logo" alt="SMEP Bank"> SMEP Microfinance Bank</span></p>
+                                <p>Account Name: <span>Foundation of Praise Ministries</span></p>
+                                <p>Account Number: <span>1003496418</span></p>
+                                <p>Branch: <span>Head Office</span></p>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div id="rewardsContent" class="about-section">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>Rewards</h2>
+                    <p class="verse">"1 Corinthians 15:58: 'Therefore, my beloved brethren, be steadfast, unmovable, always abounding in the work of the Lord, forasmuch as ye know that your labour is not in vain in the Lord'. This verse assures believers that every act
+                        of service and faithfulness to God, even when it feels exhausting or unrecognized, will never be wasted—God sees and will reward every effort done for Him. In God's kingdom, your faithful labour is never in vain, for He promises
+                        to remember and reward all that is done for His glory."</p>
+
+                    <!-- Rewards Carousel -->
+                    <div class="rewards-carousel">
+                        <div class="carousel-container">
+                            <div class="carousel-track" id="carouselTrack"></div>
+                        </div>
+
+                        <div class="carousel-nav">
+                            <button class="carousel-btn" id="prevBtn"><i class="fas fa-chevron-left"></i></button>
+                            <button class="carousel-btn" id="nextBtn"><i class="fas fa-chevron-right"></i></button>
+                        </div>
+
+                        <div class="carousel-dots" id="carouselDots"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="communityContent" class="about-section">
+            <div class="about-content">
+                <div class="community-container" style="background-image: url('cm.jpg');">
+                    <div class="community-overlay"></div>
+                    <div class="community-text">
+                        <h2 class="community-title">Community Engagement</h2>
+                        <p class="community-description animate-slide-right">Our church is dedicated to the growth of our community not just in Word but also in deeds filled with love.</p>
+                        <p class="community-verse animate-slide-left"><em>"And let us consider how we may spur one another on toward love and good deeds..."</em> (Hebrews 10:24)</p>
+                        <p class="community-explanation animate-slide-up">This scripture reminds us that our faith is not just about personal growth but actively encouraging and participating in acts of love and service within our community. We believe in putting our faith into action through various
+                            outreach programs and community development initiatives.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="adoptFamilyContent" class="about-section">
+            <div class="about-content">
+                <div class="adopt-family-container" style="background-image: url('fam.jpg');">
+                    <div class="adopt-family-overlay"></div>
+                    <div class="adopt-family-text">
+                        <h2 class="adopt-family-title">Adopt a Family Initiative</h2>
+                        <p class="adopt-family-description animate-slide-right">Our Bishop, as the vision bearer for the Adopt a Family initiative, leads us in enhancing love through evangelism that requires vigorous follow-ups on families and friends.</p>
+                        <p class="adopt-family-verse animate-slide-left"><em>"By this everyone will know that you are my disciples, if you love one another."</em> (John 13:35)</p>
+                        <p class="adopt-family-explanation animate-slide-up">This powerful scripture reminds us that our love for one another is the most visible testimony of our faith. Through this initiative, we practically demonstrate Christ's love by committing to walk alongside families, providing
+                            spiritual support, encouragement, and meeting practical needs as we're able.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="resourcesContent" class="about-section">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>Resources</h2>
+                    <p>Access helpful spiritual resources including Bible study guides, prayer books, and educational materials to support your faith journey.</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-col">
+                    <h3>Location</h3>
+                    <p><strong>Foundation of Praise Ministries</strong></p>
+                    <p>P.O Box 67528-00200, Nairobi</p>
+                    <p>Soko Mjinga, Kawangware</p>
+                    <p>Opposite Amazing Grace Ministries</p>
+                </div>
+
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <a href="#" id="footerHomeLink">Home</a>
+                    <a href="#" id="footerMinistryLink">Ministry</a>
+                    <a href="#" id="footerAboutLink">About Us</a>
+                    <a href="#" id="footerGivingLink">Giving</a>
+                    <a href="#" id="footerSermonsLink">Sermons</a>
+                    <a href="#" id="footerEventsLink">Events</a>
+                </div>
+
+                <div class="footer-col">
+                    <h3>Contact Us</h3>
+                    <p><strong>Bishop Wilson:</strong> 0722313821</p>
+                    <p><strong>Secretary:</strong> 0740437776</p>
+                    <p><strong>Email:</strong> info@foundationofpraise.org</p>
+                    <a href="https://facebook.com/groups/1958431734405957/" target="_blank">Facebook Page</a>
+                </div>
+
+                <div class="footer-col">
+                    <h3>Map</h3>
+                    <div class="footer-map">
+                        <a href="https://maps.app.goo.gl/jQypDatGmmi7vhwE9" target="_blank">
+                            <img src="mp.jpg" alt="Church Location Map">
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2025 <a href="#">Foundation of Praise Ministries</a>. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+const mainNav = document.getElementById('mainNav');
+
+mobileMenuBtn.addEventListener('click', function(e) {
+    e.stopPropagation(); // Prevent event from bubbling to document click handler
+    mainNav.classList.toggle('active');
+    this.innerHTML = mainNav.classList.contains('active') ? 
+        '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+    
+    // Close all dropdowns when mobile menu is toggled
+    if (!mainNav.classList.contains('active')) {
+        closeAllDropdowns();
+    }
+});
+
+// Enhanced Dropdown Functionality
+function closeAllDropdowns() {
+    document.querySelectorAll('.dropdown, .dropdown-nested').forEach(dropdown => {
+        dropdown.classList.remove('active');
+    });
+}
+
+function closeSiblingDropdowns(currentDropdown) {
+    const parent = currentDropdown.parentElement;
+    if (parent) {
+        parent.querySelectorAll('.dropdown, .dropdown-nested').forEach(dropdown => {
+            if (dropdown !== currentDropdown) {
+                dropdown.classList.remove('active');
+            }
+        });
+    }
+}
+
+// Main dropdown functionality
+document.querySelectorAll('.dropdown-btn:not(.nested-btn)').forEach(btn => {
+    btn.addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        
+        const dropdown = this.closest('.dropdown');
+        const isActive = dropdown.classList.contains('active');
+        
+        closeAllDropdowns();
+        
+        if (!isActive) {
+            dropdown.classList.add('active');
+        }
+    });
+});
+
+// Nested dropdown functionality (for Branches/Associates)
+document.querySelectorAll('.nested-btn').forEach(btn => {
+    btn.addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        
+        const nestedDropdown = this.closest('.dropdown-nested');
+        const isActive = nestedDropdown.classList.contains('active');
+        
+        // Close other nested dropdowns at the same level
+        closeSiblingDropdowns(nestedDropdown);
+        
+        // Toggle current nested dropdown
+        nestedDropdown.classList.toggle('active');
+        
+        // Keep parent dropdown open
+        const parentDropdown = nestedDropdown.closest('.dropdown');
+        if (parentDropdown) {
+            parentDropdown.classList.add('active');
+        }
+    });
+});
+
+// Close all dropdowns when clicking outside
+document.addEventListener('click', function(e) {
+    if (!e.target.closest('.dropdown') && !e.target.closest('.mobile-menu-btn')) {
+        closeAllDropdowns();
+        
+        // Also close mobile menu if open
+        if (mainNav.classList.contains('active')) {
+            mainNav.classList.remove('active');
+            mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+        }
+    }
+});
+
+// Close dropdowns when scrolling
+window.addEventListener('scroll', function() {
+    closeAllDropdowns();
+});
+
+// Header Scroll Effect
+const header = document.getElementById('header');
+
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Section Navigation
+        const navLinks = document.querySelectorAll('nav a, .dropdown-content a');
+        const footerLinks = document.querySelectorAll('#footerHomeLink, #footerMinistryLink, #footerAboutLink, #footerGivingLink, #footerSermonsLink, #footerEventsLink');
+        const allSections = document.querySelectorAll('.home-content, .about-section, .giving-section, .ministry-section, .sermons-section');
+
+        function showSection(sectionId) {
+            // Hide all sections
+            allSections.forEach(section => {
+                section.classList.remove('active');
+            });
+
+            // Show target section
+            const targetSection = document.getElementById(sectionId);
+            if (targetSection) {
+                targetSection.classList.add('active');
+
+                // Scroll to top of section
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+
+                // Update active nav link
+                updateActiveNavLink(sectionId);
+            }
+        }
+
+        function updateActiveNavLink(sectionId) {
+            // Remove active class from all nav links
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+            });
+
+            // Add active class to corresponding nav link
+            const correspondingLink = document.querySelector(`[id$="${sectionId.replace('Content', 'Link')}"]`);
+            if (correspondingLink) {
+                correspondingLink.classList.add('active');
+            }
+        }
+
+        // Set up event listeners for navigation links
+        navLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+
+                const targetId = this.getAttribute('id').replace('Link', 'Content');
+                showSection(targetId);
+
+                // Close mobile menu if open
+                if (mainNav.classList.contains('active')) {
+                    mainNav.classList.remove('active');
+                    mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+                }
+            });
+        });
+
+        // Set up event listeners for footer links
+        footerLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+
+                const targetId = this.getAttribute('id').replace('footer', '').replace('Link', 'Content');
+                showSection(targetId);
+            });
+        });
+
+        // Hero Learn More Button
+        const learnMoreBtn = document.getElementById('learnMoreBtn');
+        const ourServicesBtn = document.getElementById('ourServicesBtn');
+        const watchNowBtn = document.getElementById('watchNowBtn');
+
+        learnMoreBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            showSection('visionContent');
+        });
+
+        // Our Services Button - links to Ministry section
+        ourServicesBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            showSection('historyContent');
+        });
+
+        // Watch Now Button - links to Sermons section
+        watchNowBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            showSection('sermonsContent');
+        });
+
+        // Sermons Tab Functionality
+        const sermonsTabs = document.querySelectorAll('.sermons-tab');
+        const sermonsContents = document.querySelectorAll('.sermons-content');
+
+        sermonsTabs.forEach(tab => {
+            tab.addEventListener('click', function() {
+                const tabId = this.getAttribute('data-tab');
+
+                // Update active tab
+                sermonsTabs.forEach(t => t.classList.remove('active'));
+                this.classList.add('active');
+
+                // Show corresponding content
+                sermonsContents.forEach(c => c.classList.remove('active'));
+                document.getElementById(`${tabId}Content`).classList.add('active');
+            });
+        });
+
+        // GIVING SECTION FUNCTIONALITY
+        const giveNowBtn = document.getElementById('giveNowBtn');
+        const givingFormContainer = document.getElementById('givingFormContainer');
+        const cancelDonationBtn = document.getElementById('cancelDonationBtn');
+        const paymentTabs = document.querySelectorAll('.payment-tab');
+        const paymentMethods = document.querySelectorAll('.payment-method');
+        const donationForm = document.getElementById('donationForm');
+        const submitDonationBtn = document.getElementById('submitDonationBtn');
+        const paymentProcessing = document.getElementById('paymentProcessing');
+        const paymentSuccess = document.getElementById('paymentSuccess');
+        const donorPhone = document.getElementById('donorPhone');
+
+        // Toggle giving form
+        giveNowBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            givingFormContainer.classList.toggle('active');
+
+            if (givingFormContainer.classList.contains('active')) {
+                setTimeout(() => {
+                    givingFormContainer.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'nearest'
+                    });
+                }, 300);
+            }
+        });
+
+        // Cancel donation button
+        cancelDonationBtn.addEventListener('click', function() {
+            givingFormContainer.classList.remove('active');
+            resetForm();
+        });
+
+        // Payment method tabs
+        paymentTabs.forEach(tab => {
+            tab.addEventListener('click', function() {
+                const method = this.getAttribute('data-method');
+
+                paymentTabs.forEach(t => t.classList.remove('active'));
+                this.classList.add('active');
+
+                paymentMethods.forEach(m => m.classList.remove('active'));
+                document.getElementById(`${method}Method`).classList.add('active');
+            });
+        });
+
+        // Form submission
+        donationForm.addEventListener('submit', async function(e) {
+            e.preventDefault();
+
+            // Get form values
+            const name = document.getElementById('donorName').value;
+            let phone = document.getElementById('donorPhone').value;
+            const amount = document.getElementById('donationAmount').value;
+            const purpose = document.getElementById('donationPurpose').value;
+
+            // Validate phone number (10 digits starting with 07)
+            if (!/^07\d{8}$/.test(phone)) {
+                alert('Please enter a valid Kenyan phone number starting with 07 (e.g. 0712345678)');
+                return;
+            }
+
+            // Format phone as 254...
+            phone = '254' + phone.substring(1);
+
+            // Validate amount
+            if (isNaN(amount) || parseFloat(amount) <= 0) {
+                alert('Please enter a valid amount');
+                return;
+            }
+
+            // Show processing spinner
+            submitDonationBtn.disabled = true;
+            paymentProcessing.style.display = 'block';
+
+            try {
+                // Get active payment method
+                const activeTab = document.querySelector('.payment-tab.active');
+                const paymentMethod = activeTab.getAttribute('data-method');
+
+                if (paymentMethod === 'mpesa') {
+                    // Call M-Pesa API
+                    const response = await initiateMpesaPayment(name, phone, amount, purpose);
+
+                    if (response.success) {
+                        // Show success message
+                        paymentProcessing.style.display = 'none';
+                        paymentSuccess.style.display = 'block';
+
+                        // Reset form after 5 seconds
+                        setTimeout(() => {
+                            resetForm();
+                            givingFormContainer.classList.remove('active');
+                        }, 5000);
+                    } else {
+                        alert('Payment failed: ' + response.message);
+                        submitDonationBtn.disabled = false;
+                        paymentProcessing.style.display = 'none';
+                    }
+                } else if (paymentMethod === 'bank') {
+                    // For bank transfer, just show success (no actual processing)
+                    paymentProcessing.style.display = 'none';
+                    paymentSuccess.innerHTML = `
+                        <i class="fas fa-info-circle" style="font-size: 3rem; margin-bottom: 15px;"></i>
+                        <h3>Bank Transfer Details</h3>
+                        <p>Please transfer to:</p>
+                        <p><strong>SMEP Bank</strong></p>
+                        <p>Account: 1003496418</p>
+                        <p>Name: Foundation of Praise Ministries</p>
+                        <p>Amount: KES ${amount}</p>
+                        <p>Reference: ${purpose}</p>
+                    `;
+                    paymentSuccess.style.display = 'block';
+
+                    // Reset form after 10 seconds
+                    setTimeout(() => {
+                        resetForm();
+                        givingFormContainer.classList.remove('active');
+                    }, 10000);
+                }
+            } catch (error) {
+                console.error('Payment error:', error);
+                alert('An error occurred during payment processing. Please try again.');
+                submitDonationBtn.disabled = false;
+                paymentProcessing.style.display = 'none';
+            }
+        });
+
+        // Simulate M-Pesa API call (in a real implementation, this would call your backend)
+        async function initiateMpesaPayment(name, phone, amount, purpose) {
+            // In a real implementation, this would call your backend API endpoint
+            // which would then use Safaricom's Daraja API to initiate the STK push
+
+            // Simulate API call delay
+            await new Promise(resolve => setTimeout(resolve, 3000));
+
+            // This is just a simulation - in reality you would:
+            // 1. Call your backend API with the payment details
+            // 2. Backend would use Safaricom API to initiate payment
+            // 3. Backend would return success/failure response
+
+            // For demo purposes, we'll simulate a successful response 80% of the time
+            const isSuccess = Math.random() > 0.2;
+
+            return {
+                success: isSuccess,
+                message: isSuccess ? 'Payment initiated successfully' : 'Payment request failed',
+                transactionId: isSuccess ? 'MP' + Math.floor(Math.random() * 1000000000) : null
+            };
+        }
+
+        function resetForm() {
+            donationForm.reset();
+            submitDonationBtn.disabled = false;
+            paymentProcessing.style.display = 'none';
+            paymentSuccess.style.display = 'none';
+        }
+
+        // Carousel Functionality
+        const carouselTrack = document.getElementById('carouselTrack');
+        const carouselDots = document.getElementById('carouselDots');
+        const nextBtn = document.getElementById('nextBtn');
+        const prevBtn = document.getElementById('prevBtn');
+        const totalSlides = 55;
+        let currentIndex = 1;
+        let carouselInterval;
+
+        // Create slides
+        function createSlides() {
+            carouselTrack.innerHTML = '';
+            carouselDots.innerHTML = '';
+
+            // Create clone of last slide and prepend
+            const lastSlide = createSlide(totalSlides);
+            lastSlide.id = 'last-clone';
+            carouselTrack.appendChild(lastSlide);
+
+            // Create all slides
+            for (let i = 1; i <= totalSlides; i++) {
+                carouselTrack.appendChild(createSlide(i));
+
+                // Create dot
+                const dot = document.createElement('div');
+                dot.classList.add('carousel-dot');
+                if (i === 1) dot.classList.add('active');
+                dot.addEventListener('click', () => goToSlide(i));
+                carouselDots.appendChild(dot);
+            }
+
+            // Create clone of first slide and append
+            const firstSlide = createSlide(1);
+            firstSlide.id = 'first-clone';
+            carouselTrack.appendChild(firstSlide);
+
+            // Set initial position
+            updateCarousel();
+        }
+
+        function createSlide(index) {
+            const slide = document.createElement('div');
+            slide.classList.add('carousel-slide');
+
+            const img = document.createElement('img');
+            img.src = `r${index}.jpg`;
+            img.alt = `Church Event ${index}`;
+
+            const caption = document.createElement('div');
+            caption.classList.add('carousel-caption');
+            caption.textContent = `Event ${index}`;
+
+            slide.appendChild(img);
+            slide.appendChild(caption);
+
+            return slide;
+        }
+
+        function updateCarousel() {
+            carouselTrack.style.transform = `translateX(-${currentIndex * 100}%)`;
+
+            // Update active dot
+            const dots = document.querySelectorAll('.carousel-dot');
+            dots.forEach((dot, index) => {
+                dot.classList.remove('active');
+
+                let activeIndex = currentIndex - 1;
+                if (activeIndex < 0) activeIndex = totalSlides - 1;
+                if (activeIndex >= totalSlides) activeIndex = 0;
+
+                if (index === activeIndex) {
+                    dot.classList.add('active');
+                }
+            });
+        }
+
+        function goToSlide(index) {
+            currentIndex = index;
+            updateCarousel();
+            resetAutoScroll();
+        }
+
+        function nextSlide() {
+            currentIndex++;
+            updateCarousel();
+
+            // If we've reached the clone, jump to real slide without animation
+            if (currentIndex > totalSlides) {
+                setTimeout(() => {
+                    carouselTrack.style.transition = 'none';
+                    currentIndex = 1;
+                    updateCarousel();
+
+                    // Force reflow
+                    void carouselTrack.offsetWidth;
+
+                    // Restore transition
+                    carouselTrack.style.transition = 'transform 0.5s ease';
+                }, 500);
+            }
+        }
+
+        function prevSlide() {
+            currentIndex--;
+            updateCarousel();
+
+            // If we've reached the clone, jump to real slide without animation
+            if (currentIndex < 0) {
+                setTimeout(() => {
+                    carouselTrack.style.transition = 'none';
+                    currentIndex = totalSlides;
+                    updateCarousel();
+
+                    // Force reflow
+                    void carouselTrack.offsetWidth;
+
+                    // Restore transition
+                    carouselTrack.style.transition = 'transform 0.5s ease';
+                }, 500);
+            }
+        }
+
+        // Auto-advance carousel
+        function startAutoScroll() {
+            carouselInterval = setInterval(() => {
+                nextSlide();
+            }, 3000);
+        }
+
+        function resetAutoScroll() {
+            clearInterval(carouselInterval);
+            startAutoScroll();
+        }
+
+        // Event listeners
+        nextBtn.addEventListener('click', () => {
+            nextSlide();
+            resetAutoScroll();
+        });
+
+        prevBtn.addEventListener('click', () => {
+            prevSlide();
+            resetAutoScroll();
+        });
+
+        // Pause on hover
+        carouselTrack.addEventListener('mouseenter', () => {
+            clearInterval(carouselInterval);
+        });
+
+        carouselTrack.addEventListener('mouseleave', startAutoScroll);
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            // Close mobile menu if screen is resized
+            window.addEventListener('resize', function() {
+                if (window.innerWidth > 768 && mainNav.classList.contains('active')) {
+                    mainNav.classList.remove('active');
+                    mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+                }
+            });
+
+            // Initialize carousel
+            createSlides();
+            startAutoScroll();
+
+            // Set home as active
+            showSection('homeContent');
+        });
+    </script>
+</body>
+
+</html>

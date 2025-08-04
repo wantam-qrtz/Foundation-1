@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>FOUNDATION OF PRAISE MINISTRIES</title>
+    <style>
+        /* Video background styling */
+        .video-bg {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+            z-index: -2;
+        }
+        .video-bg video {
+            min-width: 100vw;
+            min-height: 100vh;
+            object-fit: cover;
+            width: 100vw;
+            height: 100vh;
+        }
+        .overlay {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100vw; height: 100vh;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: -1;
+        }
+        body {
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            color: #fff;
+            position: relative;
+            z-index: 1;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+        header {
+            display: flex;
+            align-items: center;
+            height: 120px;
+            padding: 0 0 0 24px;
+            position: relative;
+            z-index: 2;
+            background: transparent;
+        }
+        .logo-container {
+            height: 100%;
+            display: flex;
+            align-items: center;
+        }
+        .logo-container img {
+            height: 90px;
+            width: 90px;
+            object-fit: contain;
+            border-radius: 50%;
+            background: #fff;
+            border: 2px solid #fff;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.10);
+        }
+        nav {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            height: 100%;
+            margin-left: 40px;
+        }
+        nav ul {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            gap: 30px;
+            height: 100%;
+            align-items: center;
+        }
+        nav ul li {
+            position: relative;
+        }
+        nav ul li a, .dropbtn {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.1em;
+            font-weight: bold;
+            padding: 10px 15px;
+            background: transparent;
+            transition: color 0.3s ease;
+            display: flex;
+            align-items: center;
+            height: 40px;
+            letter-spacing: 1px;
+            cursor: pointer;
+            border: none;
+            outline: none;
+            z-index: 3;
+            position: relative;
+            text-transform: uppercase;
+        }
+        nav ul li a:hover, nav ul li a.active,
+        .dropbtn:hover, .dropbtn.active {
+            color: #9c27b0;
+        }
+        /* Dropdown Styling */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+            z-index: 3;
+        }
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background: rgba(0, 0, 0, 0.9);
+            min-width: 220px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+            z-index: 10;
+            top: 52px;
+            left: 0;
+            border-radius: 4px;
+            padding: 8px 0;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transform: translateY(10px);
+            opacity: 0;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .dropdown:hover .dropdown-content {
+            display: block;
+            transform: translateY(0);
+            opacity: 1;
+        }
+        .dropdown-content.show {
+            display: block;
+            transform: translateY(0);
+            opacity: 1;
+        }
+        .dropdown-content a {
+            color: #fff;
+            padding: 12px 20px;
+            text-decoration: none;
+            display: block;
+            font-weight: 500;
+            font-size: 0.95em;
+            transition: all 0.25s ease;
+            position: relative;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .dropdown-content a:hover,
+        .dropdown-content a.active {
+            color: #9c27b0;
+        }
+        .dropdown-content a:not(:last-child) {
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        /* Main content area */
+        .main-content {
+            padding: 140px 20px 60px;
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+        /* About content sections */
+        .about-section {
+            display: none;
+            background: rgba(0, 0, 0, 0.85);
+            border-radius: 8px;
+            padding: 40px;
+            margin-bottom: 40px;
+            color: #fff;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        .about-section.active {
+            display: block;
+            animation: fadeInUp 0.6s ease-out;
+        }
+        /* Rewards Gallery */
+        .rewards-container {
+            margin-top: 30px;
+        }
+        .rewards-text {
+            font-style: italic;
+            color: #bbb;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+        .rewards-gallery {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .gallery-track {
+            display: flex;
+            gap: 25px; /* Increased gap for better spacing */
+            transition: transform 0.6s ease-in-out; /* Smooth transition for scrolling */
+        }
+        .gallery-item {
+            flex: 0 0 auto; /* Don't shrink or grow, maintain width */
+            width: calc(110px * 1.7); /* Increased width by 70% */
+            height: calc(70px * 1.7); /* Increased height by 70% */
+            object-fit: cover;
+            border-radius: 4px;
+            transition: transform 0.4s ease-in-out, filter 0.4s ease-in-out, opacity 0.4s ease-in-out, box-shadow 0.4s ease-in-out;
+            filter: blur(3px);
+            opacity: 0.6;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        .gallery-item.prev,
+        .gallery-item.next {
+            transform: scale(0.9);
+            filter: blur(2px);
+            opacity: 0.8;
+        }
+        .gallery-item.current {
+            transform: scale(1.1);
+            filter: none;
+            opacity: 1;
+            z-index: 2;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+        }
+        /* Animations */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        /* Clearfix */
+        .clearfix::after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                height: auto;
+                padding: 15px;
+            }
+            .logo-container {
+                margin-bottom: 15px;
+                padding-left: 0;
+            }
+            nav {
+                margin-left: 0;
+                width: 100%;
+            }
+            nav ul {
+                flex-wrap: wrap;
+                gap: 10px;
+                padding: 0;
+            }
+            .dropdown-content {
+                min-width: 180px;
+                top: 42px;
+            }
+            .about-section {
+                padding: 25px;
+            }
+            .rewards-gallery {
+                height: auto; /* Adjust height for smaller screens */
+            }
+            .gallery-track {
+                gap: 15px; /* Adjust gap for smaller screens */
+            }
+            .gallery-item {
+                width: calc(80px * 1.7);
+                height: calc(50px * 1.7);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="video-bg">
+        <video src="bg.mp4" autoplay loop muted playsinline></video>
+    </div>
+    <div class="overlay"></div>
+
+    <header>
+        <div class="logo-container">
+            <img src="logo.jpg" alt="MINISTRY LOGO" />
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#">HOME</a></li>
+                <li><a href="#">MINISTRY</a></li>
+                <li class="dropdown">
+                    <button class="dropbtn" id="aboutBtn">ABOUT US</button>
+                    <div class="dropdown-content" id="aboutDropdown">
+                        <a href="#" id="visionLink">VISION</a>
+                        <a href="#" id="missionLink">MISSION</a>
+                        <a href="#" id="coreValuesLink">CORE VALUES</a>
+                    </div>
+                </li>
+                <li><a href="#">CONTACT</a></li>
+                <li><a href="#">SERMONS</a></li>
+                <li class="dropdown">
+                    <button class="dropbtn" id="eventsBtn">EVENTS</button>
+                    <div class="dropdown-content" id="eventsDropdown">
+                        <a href="#" id="rewardsLink">REWARDS</a>
+                        <a href="#" id="communityLink">COMMUNITY</a>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="main-content">
+        <div id="rewardsContent" class="about-section">
+            <div class="about-text">
+                <strong>REWARDS</strong>
+                <div class="rewards-container">
+                    <p class="rewards-text">
+                        "1 Corinthians 15:58: 'Therefore, my beloved brethren, be steadfast, unmovable, always abounding in the work of the Lord, forasmuch as ye know that your labour is not in vain in the Lord'. This verse assures believers that every act of service and faithfulness to God, even when it feels exhausting or unrecognized, will never be wasted—God sees and will reward every effort done for Him. In God's kingdom, your faithful labor is never in vain, for He promises to remember and reward all that is done for His glory."
+                    </p>
+
+                    <div class="rewards-gallery">
+                        <div class="gallery-track">
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="communityContent" class="about-section">
+            <div class="about-text">
+                <strong>COMMUNITY</strong><br /><br />
+                OUR CHURCH COMMUNITY IS BUILT ON LOVE, FELLOWSHIP, AND SERVICE. JOIN US AS WE GROW TOGETHER IN FAITH AND SUPPORT ONE ANOTHER IN OUR SPIRITUAL JOURNEYS.
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Elements
+        const eventsBtn = document.getElementById("eventsBtn");
+        const eventsDropdown = document.getElementById("eventsDropdown");
+        const rewardsLink = document.getElementById("rewardsLink");
+        const communityLink = document.getElementById("communityLink");
+        const rewardsContent = document.getElementById("rewardsContent");
+        const communityContent = document.getElementById("communityContent");
+        const galleryTrack = document.querySelector('.gallery-track');
+        const imageCount = 55; // Total number of images
+        let currentIndex = 0;
+
+        // Function to create and append gallery images
+        function createGallery() {
+            for (let i = 1; i <= imageCount; i++) {
+                const img = document.createElement('img');
+                img.src = `r${i}.jpg`;
+                img.alt = `Reward ${i}`;
+                img.className = 'gallery-item';
+                galleryTrack.appendChild(img);
+            }
+            updateGallery();
+        }
+
+        // Function to update the gallery display
+        function updateGallery() {
+            const items = document.querySelectorAll('.gallery-item');
+            const visibleCount = 3;
+            const totalItems = items.length;
+
+            if (totalItems <= visibleCount) {
+                items.forEach(item => {
+                    item.className = 'gallery-item current';
+                });
+                galleryTrack.style.transform = 'translateX(0)';
+                return;
+            }
+
+            items.forEach((item, index) => {
+                item.className = 'gallery-item';
+                const diff = index - currentIndex;
+
+                if (diff === 0) {
+                    item.classList.add('current');
+                } else if (diff === -1 || diff === totalItems - 1) {
+                    item.classList.add('prev');
+                } else if (diff === 1 || diff === -(totalItems - 1)) {
+                    item.classList.add('next');
+                }
+            });
+
+            const itemWidth = items[0].offsetWidth;
+            const trackOffset = -currentIndex * itemWidth - (itemWidth * 0.1) ; // Adjust for scaling
+            galleryTrack.style.transform = `translateX(${trackOffset}px)`;
+        }
+
+        // Function to move to the next image
+        function nextImage() {
+            currentIndex = (currentIndex + 1) % imageCount;
+            updateGallery();
+        }
+
+        // Set interval for auto-scroll (adjust speed as needed)
+        const scrollInterval = setInterval(nextImage, 2000); // Change image every 2 seconds
+
+        // Initialize the gallery
+        createGallery();
+
+        // Toggle dropdown visibility
+        function toggleDropdown(dropdown) {
+            dropdown.classList.toggle("show");
+        }
+
+        // Hide all content sections
+        function hideAll() {
+            rewardsContent.classList.remove("active");
+            communityContent.classList.remove("active");
+        }
+
+        // Show content and scroll to it
+        function showContent(contentElement) {
+            hideAll();
+            contentElement.classList.add("active");
+            contentElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+        // Event listeners
+        eventsBtn.addEventListener("click", (e) => {
+            e.stopPropagation();
+            toggleDropdown(eventsDropdown);
+        });
+
+        rewardsLink.addEventListener("click", (e) => {
+            e.preventDefault();
+            showContent(rewardsContent);
+            eventsDropdown.classList.remove("show");
+            clearInterval(scrollInterval); // Stop auto-scroll when rewards are viewed
+        });
+
+        communityLink.addEventListener("click", (e) => {
+            e.preventDefault();
+            showContent(communityContent);
+            eventsDropdown.classList.remove("show");
+        });
+
+        // Hide dropdown when clicking outside
+        document.addEventListener("click", (e) => {
+            if (!e.target.closest(".dropdown")) {
+                eventsDropdown.classList.remove("show");
+            }
+        });
+    </script>
+</body>
+</html>
